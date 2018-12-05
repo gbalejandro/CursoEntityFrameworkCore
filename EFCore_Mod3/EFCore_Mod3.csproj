@@ -135,9 +135,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\20181202141146_Initial.cs" />
-    <Compile Include="Migrations\20181202141146_Initial.designer.cs">
-      <DependentUpon>20181202141146_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\20181205134644_Initial.cs" />
+    <Compile Include="Migrations\20181205134644_Initial.designer.cs">
+      <DependentUpon>20181205134644_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -149,6 +149,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
