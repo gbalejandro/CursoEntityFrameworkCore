@@ -12,5 +12,6 @@ namespace EFCore_Mod3.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
         public DateTime FechaNacimiento { get; set; }
+        public bool EstaBorrado { get; set; }
     }
 }

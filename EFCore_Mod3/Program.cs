@@ -115,12 +115,47 @@ namespace EFCore_Mod3
             //    context.Entry(student).State = EntityState.Deleted;
             //    context.SaveChanges();
             //}
+
+            //// filtro a nivel de modelo
+            //using (var context = new ApplicationDbContext())
+            //{
+            //    //var estudiantes = context.Estudiantes.ToList();
+            //    // para ignorar el filtro
+            //    var estudiantesTodos = context.Estudiantes.IgnoreQueryFilters().ToList();
+            //}
+
+            //// Skip y Take
+            //using (var context = new ApplicationDbContext())
+            //{
+            //    // ejemplo take
+            //    var primeros5Estudiantes = context.Estudiantes.Skip(3).Take(5).ToList();
+            //    // ejemplo paginacion
+            //    var pagina = 1;
+            //    var muestra = 10;
+
+            //    var estudiantes = context.Estudiantes
+            //        .Skip((pagina - 1) * muestra).Take(muestra).ToList();
+            //}
+
+            // GroupBy
+            using (var context = new ApplicationDbContext())
+            {
+                var reporte1 = context.Estudiantes.IgnoreQueryFilters()
+                    .GroupBy(x => new { x.EstaBorrado })
+                    .Select(x => new { x.Key, Count = x.Count() }).ToList();
+                // Having
+                var reporte2 = context.Estudiantes.IgnoreQueryFilters()
+                    .GroupBy(x => new { x.FechaNacimiento.Year })
+                    .Where(x => x.Count() >= 2)
+                    .Select(x => new { x.Key, Count = x.Count() })
+                    .ToList();
+            }
         }
     }
 
-    class EstudianteViewModel
-    {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-    }
+    //class EstudianteViewModel
+    //{
+    //    public int Id { get; set; }
+    //    public string Nombre { get; set; }
+    //}
 }

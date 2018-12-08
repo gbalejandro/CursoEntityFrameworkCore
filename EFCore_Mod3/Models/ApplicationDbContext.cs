@@ -17,6 +17,13 @@ namespace EFCore_Mod3.Models
                 .UseLoggerFactory(new LoggerFactory().AddConsole((category, level) => level == LogLevel.Information && category == DbLoggerCategory.Database.Command.Name, true));
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Estudiante>().HasQueryFilter(x => x.EstaBorrado == false);
+
+            //modelBuilder.Entity<Estudiante>().Property(x => x.Nombre).HasField("_nombre");
+        }
+
         public DbSet<Estudiante> Estudiantes { get; set; }
     }
 }

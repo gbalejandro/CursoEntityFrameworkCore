@@ -139,6 +139,10 @@
     <Compile Include="Migrations\20181205134644_Initial.designer.cs">
       <DependentUpon>20181205134644_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20181208131329_Estudiante_EstaBorrado.cs" />
+    <Compile Include="Migrations\20181208131329_Estudiante_EstaBorrado.designer.cs">
+      <DependentUpon>20181208131329_Estudiante_EstaBorrado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Estudiante.cs" />
