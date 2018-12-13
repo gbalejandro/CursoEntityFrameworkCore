@@ -143,6 +143,14 @@
     <Compile Include="Migrations\20181208131329_Estudiante_EstaBorrado.designer.cs">
       <DependentUpon>20181208131329_Estudiante_EstaBorrado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20181210165049_Estudiantes_DataSeed.cs" />
+    <Compile Include="Migrations\20181210165049_Estudiantes_DataSeed.designer.cs">
+      <DependentUpon>20181210165049_Estudiantes_DataSeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20181210165429_Estudiantes_RemuevoEstudiante2.cs" />
+    <Compile Include="Migrations\20181210165429_Estudiantes_RemuevoEstudiante2.designer.cs">
+      <DependentUpon>20181210165429_Estudiantes_RemuevoEstudiante2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Estudiante.cs" />

@@ -1,10 +1,6 @@
 ﻿using EFCore_Mod3.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EFCore_Mod3
 {
@@ -137,19 +133,97 @@ namespace EFCore_Mod3
             //        .Skip((pagina - 1) * muestra).Take(muestra).ToList();
             //}
 
-            // GroupBy
-            using (var context = new ApplicationDbContext())
-            {
-                var reporte1 = context.Estudiantes.IgnoreQueryFilters()
-                    .GroupBy(x => new { x.EstaBorrado })
-                    .Select(x => new { x.Key, Count = x.Count() }).ToList();
-                // Having
-                var reporte2 = context.Estudiantes.IgnoreQueryFilters()
-                    .GroupBy(x => new { x.FechaNacimiento.Year })
-                    .Where(x => x.Count() >= 2)
-                    .Select(x => new { x.Key, Count = x.Count() })
-                    .ToList();
-            }
+            //// GroupBy
+            //using (var context = new ApplicationDbContext())
+            //{
+            //    var reporte1 = context.Estudiantes.IgnoreQueryFilters()
+            //        .GroupBy(x => new { x.EstaBorrado })
+            //        .Select(x => new { x.Key, Count = x.Count() }).ToList();
+            //    // Having
+            //    var reporte2 = context.Estudiantes.IgnoreQueryFilters()
+            //        .GroupBy(x => new { x.FechaNacimiento.Year })
+            //        .Where(x => x.Count() >= 2)
+            //        .Select(x => new { x.Key, Count = x.Count() })
+            //        .ToList();
+            //}
+
+            // Queries arbitrarios
+            //using (var context = new ApplicationDbContext())
+            //{
+            //var students = context.Estudiantes
+            //    .FromSql(@"SELECT TOP 50 PERCENT Id, FechaNacimiento
+            //                FROM Estudiantes ORDER BY FechaNacimiento DESC")
+            //    .IgnoreQueryFilters()
+            //    .Select(x => new { x.Id, x.FechaNacimiento }).ToList();
+
+            ///////////////////////////////////////////////////////////////////
+            //var Id = 4;
+            //var parameter = new SqlParameter("@Id", Id);
+            //var student = context.Estudiantes.FromSql("SELECT * from Estudiantes where Id = @Id",
+            //    new SqlParameter[] { parameter }).FirstOrDefault();
+
+            // String Interpolation con Queries arbitrarios
+            //var student = context.Estudiantes.FromSql($"SELECT * from Estudiantes where Id = {Id}")
+            //    .FirstOrDefault();
+
+            //}
+
+            // Transacciones
+            //using (var context = new ApplicationDbContext())
+            //{
+            //    using (var transaction = context.Database.BeginTransaction())
+            //    {
+            //        var estudiante1 = new Estudiante();
+            //        estudiante1.Nombre = "Robert Fatou";
+            //        context.Add(estudiante1);
+            //        context.SaveChanges();
+            //        // El Id tendrá un valor válido
+            //        Console.WriteLine("Id del estudiante: " + estudiante1.Id);
+            //        // Vamos a revertir la operación realizada
+            //        //transaction.Rollback();
+            //        // para que guarde
+            //        transaction.Commit();
+            //    }
+            //}
+            //using (var scope = new TransactionScope())
+            //{
+            //    using (var context = new ApplicationDbContext())
+            //    {
+            //        var student1 = new Estudiante();
+            //        student1.Nombre = "Transaction Scope 1";
+            //        context.Add(student1);
+            //        context.SaveChanges();
+            //    }
+
+            //    using (var context = new ApplicationDbContext())
+            //    {
+            //        var student2 = new Estudiante();
+            //        student2.Nombre = "Transaction Scope 2";
+            //        context.Add(student2);
+            //        context.SaveChanges();
+            //    }
+
+            //    // Descomenta la siguiente línea de código si quieres que
+            //    // las operaciones sean persistidas en la base de datos
+            //    //scope.Complete();
+            //}
+
+            // Ejecucioon diferida
+            //using (var context = new ApplicationDbContext())
+            //{
+            //    // Forma 1: Funciones en una línea
+            //    var estudiantes = context.Estudiantes
+            //        .Where(x => x.FechaNacimiento.Year < 1990)
+            //        .OrderByDescending(x => x.FechaNacimiento).ToList();
+
+            //    // Forma 2: Funciones en varias líneas
+            //    var query = context.Estudiantes.AsQueryable();
+            //    if (tal condicion){
+            //        query = query.Where(x => x.FechaNacimiento.Year < 1990);
+            //    }
+            //    query = query.OrderByDescending(x => x.FechaNacimiento);
+            //    var student2 = query.ToList();
+            //}
         }
     }
 

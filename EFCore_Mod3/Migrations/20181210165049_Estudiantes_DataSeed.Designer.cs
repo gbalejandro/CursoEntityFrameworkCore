@@ -4,14 +4,16 @@ using EFCore_Mod3.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCore_Mod3.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181210165049_Estudiantes_DataSeed")]
+    partial class Estudiantes_DataSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +38,8 @@ namespace EFCore_Mod3.Migrations
                     b.ToTable("Estudiantes");
 
                     b.HasData(
-                        new { Id = 25, EstaBorrado = false, FechaNacimiento = new DateTime(1985, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), Nombre = "Data Seed" }
+                        new { Id = 25, EstaBorrado = false, FechaNacimiento = new DateTime(1985, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), Nombre = "Data Seed" },
+                        new { Id = 26, EstaBorrado = false, FechaNacimiento = new DateTime(1995, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), Nombre = "Data Seed2" }
                     );
                 });
 #pragma warning restore 612, 618
