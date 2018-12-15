@@ -135,24 +135,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\20181205134644_Initial.cs" />
-    <Compile Include="Migrations\20181205134644_Initial.designer.cs">
-      <DependentUpon>20181205134644_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20181208131329_Estudiante_EstaBorrado.cs" />
-    <Compile Include="Migrations\20181208131329_Estudiante_EstaBorrado.designer.cs">
-      <DependentUpon>20181208131329_Estudiante_EstaBorrado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20181210165049_Estudiantes_DataSeed.cs" />
-    <Compile Include="Migrations\20181210165049_Estudiantes_DataSeed.designer.cs">
-      <DependentUpon>20181210165049_Estudiantes_DataSeed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20181210165429_Estudiantes_RemuevoEstudiante2.cs" />
-    <Compile Include="Migrations\20181210165429_Estudiantes_RemuevoEstudiante2.designer.cs">
-      <DependentUpon>20181210165429_Estudiantes_RemuevoEstudiante2.cs</DependentUpon>
+    <Compile Include="Migrations\20181215201012_Relaciones.cs" />
+    <Compile Include="Migrations\20181215201012_Relaciones.designer.cs">
+      <DependentUpon>20181215201012_Relaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Contacto.cs" />
     <Compile Include="Models\Estudiante.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

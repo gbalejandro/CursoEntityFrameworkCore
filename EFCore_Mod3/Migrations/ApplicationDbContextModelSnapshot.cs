@@ -19,13 +19,30 @@ namespace EFCore_Mod3.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("EFCore_Mod3.Models.Estudiante", b =>
+            modelBuilder.Entity("EFCore_Mod3.Models.Contacto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("EstaBorrado");
+                    b.Property<int>("EstudianteId");
+
+                    b.Property<string>("Nombre");
+
+                    b.Property<string>("Relacion");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EstudianteId");
+
+                    b.ToTable("Contactos");
+                });
+
+            modelBuilder.Entity("EFCore_Mod3.Models.Estudiante", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("FechaNacimiento");
 
@@ -34,10 +51,14 @@ namespace EFCore_Mod3.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Estudiantes");
+                });
 
-                    b.HasData(
-                        new { Id = 25, EstaBorrado = false, FechaNacimiento = new DateTime(1985, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), Nombre = "Data Seed" }
-                    );
+            modelBuilder.Entity("EFCore_Mod3.Models.Contacto", b =>
+                {
+                    b.HasOne("EFCore_Mod3.Models.Estudiante", "Estudiante")
+                        .WithMany("Contactos")
+                        .HasForeignKey("EstudianteId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

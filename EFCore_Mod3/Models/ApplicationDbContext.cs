@@ -23,13 +23,10 @@ namespace EFCore_Mod3.Models
             //var estudiante2 = new Estudiante() { Id = 26, Nombre = "Data Seed2", FechaNacimiento = new DateTime(1995, 3, 10) };
             //modelBuilder.Entity<Estudiante>().HasData(new Estudiante[] { estudiante1, estudiante2 });
 
-            modelBuilder.Entity<Estudiante>().HasQueryFilter(x => x.EstaBorrado == false);
-
-            //modelBuilder.Entity<Estudiante>().Property(x => x.Nombre).HasField("_nombre");
-
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Estudiante> Estudiantes { get; set; }
+        public DbSet<Contacto> Contactos { get; set; }
     }
 }
