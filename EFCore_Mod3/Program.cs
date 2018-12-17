@@ -1,5 +1,6 @@
 ﻿using EFCore_Mod3.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EFCore_Mod3
@@ -31,11 +32,11 @@ namespace EFCore_Mod3
 
             //using (var context = new ApplicationDbContext())
             //{
-            //// paso 2: notificamos que queremos agregar un estudiante
-            //context.AddRange(estudiantes);
+            //    // paso 2: notificamos que queremos agregar un estudiante
+            //    context.AddRange(estudiantes);
 
-            //// paso 3: Guardamos los cambios
-            //context.SaveChanges();
+            //    // paso 3: Guardamos los cambios
+            //    context.SaveChanges();
             //var estudiantes = context.Estudiantes.ToList();
             //var estudiantes2 = context.Estudiantes.OrderByDescending(x => x.FechaNacimiento)
             //    .ThenBy(x => x.Nombre).ToList();
@@ -60,7 +61,7 @@ namespace EFCore_Mod3
             // Modelo conectado
             //var student = context.Estudiantes.First(x => x.Nombre.StartsWith("Estudiante 0"));
             //student.Nombre += " Gonzalez";
-            //context.SaveChanges();
+            //    //context.SaveChanges();
             //}
 
             //// Modelo desconectado
@@ -224,6 +225,20 @@ namespace EFCore_Mod3
             //    query = query.OrderByDescending(x => x.FechaNacimiento);
             //    var student2 = query.ToList();
             //}
+
+            // Data relacionada uno a muchos
+            using (var context = new ApplicationDbContext())
+            {
+                var studentId = context.Estudiantes.Select(x => x.Id).FirstOrDefault();
+
+                var contact = new Contacto();
+                contact.Nombre = "Yessica Krystal";
+                contact.Relacion = "Hermana";
+                contact.EstudianteId = studentId;
+
+                context.Add(contact);
+                context.SaveChanges();
+            }
         }
     }
 
