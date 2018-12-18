@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace EFCore_Mod3
 {
@@ -227,18 +228,73 @@ namespace EFCore_Mod3
             //}
 
             // Data relacionada uno a muchos
-            using (var context = new ApplicationDbContext())
-            {
-                var studentId = context.Estudiantes.Select(x => x.Id).FirstOrDefault();
+            /////////////////////////////////
+            //using (var context = new ApplicationDbContext())
+            //{
+            //    var studentId = context.Estudiantes.Select(x => x.Id).FirstOrDefault();
 
-                var contact = new Contacto();
-                contact.Nombre = "Yessica Krystal";
-                contact.Relacion = "Hermana";
-                contact.EstudianteId = studentId;
+            //    var contact = new Contacto();
+            //    contact.Nombre = "Yessica Krystal";
+            //    contact.Relacion = "Hermana";
+            //    contact.EstudianteId = studentId;
 
-                context.Add(contact);
-                context.SaveChanges();
-            }
+            //    context.Add(contact);
+            //    context.SaveChanges();
+            //}
+
+            // Eager Loading o Carga Ansiosa
+            //using (var context = new ApplicationDbContext())
+            //{
+            //    // Opcion 1: Include con expresión lambda
+            //    var estudiantes = context.Estudiantes.Include(x => x.Contactos).ToList();
+
+            //    // Opcion 2: Include con string
+            //    var estudiantes2 = context.Estudiantes.Include("Contactos").ToList();
+
+            //    // Opcion para traer otra informacion de la tabla hija (Contactos)
+            //    var estudiante3 = context.Estudiantes.Include(x => x.Contactos)
+            //        .ThenInclude(contact => contact.Direcciones).ToList();
+            //}
+
+            // Lazy Loading o Carga Perezosa
+            ////////////////////////////////
+            //using (var context = new ApplicationDbContext())
+            //{
+            //    var estudiante = context.Estudiantes.FirstOrDefault();
+
+            //    // La siguiente linea carga los contactos
+            //    var contactos = estudiante.Contactos.ToList();
+
+            //    // Esta es otra manera de cargar los contactos
+            //    foreach (var contact in estudiante.Contactos)
+            //    {
+
+            //    }
+            //}
+
+            // Relaciones uno a uno
+            ///////////////////////
+            //int estudianteId;
+
+            //using (var context = new ApplicationDbContext())
+            //{
+            //    estudianteId = context.Estudiantes.Select(x => x.Id).FirstOrDefault();
+            //}
+
+            //using (var context = new ApplicationDbContext())
+            //{
+            //    var studentDetails = new EstudianteDetalle();
+            //    studentDetails.Identificacion = "123-4567890-1";
+            //    studentDetails.EstudianteId = estudianteId;
+
+            //    context.EstudianteDetalles.Add(studentDetails);
+            //    context.SaveChanges();
+            //}
+
+            //using (var context = new ApplicationDbContext())
+            //{
+            //    var students = context.Estudiantes.Include(x => x.Detalle).ToList();
+            //}
         }
     }
 

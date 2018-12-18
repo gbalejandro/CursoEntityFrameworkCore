@@ -13,5 +13,6 @@ namespace EFCore_Mod3.Models
         public string Nombre { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public List<Contacto> Contactos { get; set; }
+        public EstudianteDetalle Detalle { get; set; }
     }
 }
